@@ -1,29 +1,24 @@
-# Array fall of students
-students = [
-  "Dr. Hannibal Lecter",
-  "Darth Vader",
-  "Nurse Ratched",
-  "Michael Corleone",
-  "Alex DeLarge",
-  "The Wicked Witch of the West",
-  "Terminator",
-  "Freddy Krueger",
-  "The Joker",
-  "Joffrey Baratheon",
-  "Norman Bates"
-]
-def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
-end
-def print(names)
-  names.each do |name|
-    puts name
+def interactive_menu
+  students = []
+  loop do
+    # 1. print the menu and ask the user what to do
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "9. Exit" # 9 because we'll be adding more items
+    # 2. read the input and save it into a variable
+    selection = gets.chomp
+    # 3. do what the user has asked
+    case selection
+    when "1"
+      students = input_students
+    when "2"
+      print_header
+      print(students)
+      print_footer(students)
+    when "9"
+      exit # this will cause the program to terminate
+    else
+      puts "I don't know what you meant, try again"
+    end
   end
 end
-def print_footer(names)
-  puts "Overall, we have #{names.count} great students"
-end
-print_header
-print(students)
-print_footer(students)
